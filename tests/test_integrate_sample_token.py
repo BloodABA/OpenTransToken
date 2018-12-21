@@ -15,7 +15,7 @@ from tbears.libs.icon_integrate_test import IconIntegrateTestBase, SCORE_INSTALL
 DIR_PATH = os.path.abspath(os.path.dirname(__file__))
 
 
-class TestSampleToken(IconIntegrateTestBase):
+class TestOpenTransToken(IconIntegrateTestBase):
     TEST_HTTP_ENDPOINT_URI_V3 = "http://127.0.0.1:9000/api/v3"
     SCORE_PROJECT = os.path.abspath(os.path.join(DIR_PATH, '..'))
 
@@ -76,7 +76,7 @@ class TestSampleToken(IconIntegrateTestBase):
         # Sends the call request
         response = self.process_call(call, self.icon_service)
 
-        self.assertEqual("SampleToken", response)
+        self.assertEqual("OpenTransToken", response)
 
     def test_call_symbol(self):
         # Generates a call instance using the CallBuilder

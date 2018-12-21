@@ -1,6 +1,6 @@
 from iconservice import *
 
-TAG = 'SampleToken'
+TAG = 'OpenTransToken'
 
 
 # An interface of ICON Token Standard, IRC-2
@@ -39,11 +39,13 @@ class TokenFallbackInterface(InterfaceScore):
         pass
 
 
-class SampleToken(IconScoreBase, TokenStandard):
+class OpenTransToken(IconScoreBase, TokenStandard):
 
     _BALANCES = 'balances'
     _TOTAL_SUPPLY = 'total_supply'
     _DECIMALS = 'decimals'
+
+    Address 
 
     @eventlog(indexed=3)
     def Transfer(self, _from: Address, _to: Address, _value: int, _data: bytes):
@@ -54,7 +56,7 @@ class SampleToken(IconScoreBase, TokenStandard):
         self._total_supply = VarDB(self._TOTAL_SUPPLY, db, value_type=int)
         self._decimals = VarDB(self._DECIMALS, db, value_type=int)
         self._balances = DictDB(self._BALANCES, db, value_type=int)
-
+    
     def on_install(self, _initialSupply: int, _decimals: int) -> None:
         super().on_install()
 
@@ -76,11 +78,11 @@ class SampleToken(IconScoreBase, TokenStandard):
 
     @external(readonly=True)
     def name(self) -> str:
-        return "SampleToken"
+        return "OpenTransToken"
 
     @external(readonly=True)
     def symbol(self) -> str:
-        return "ST"
+        return "OTT"
 
     @external(readonly=True)
     def decimals(self) -> int:
@@ -120,3 +122,5 @@ class SampleToken(IconScoreBase, TokenStandard):
         # Emits an event log `Transfer`
         self.Transfer(_from, _to, _value, _data)
         Logger.debug(f'Transfer({_from}, {_to}, {_value}, {_data})', TAG)
+
+    
